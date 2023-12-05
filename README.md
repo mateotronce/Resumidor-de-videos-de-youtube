@@ -29,6 +29,9 @@ El proyecto se dividirá en los siguientes componentes principales:
 4. **Despliegue:**
    - Configuración de un entorno de producción para la aplicación Streamlit.
    - Implementación de la interfaz y la lógica de la IA en un servidor web accesible.
+  
+**Puedes probar el proyecto en el siguiente link**:
+https://huggingface.co/spaces/FOTOTRONCO/ytr
 
 ## Ejecución del Proyecto
 
