@@ -8,10 +8,9 @@ Este proyecto tiene como objetivo desarrollar una interfaz de usuario utilizando
 
 - **Streamlit:** Una biblioteca de Python para la creación de aplicaciones web interactivas con facilidad.
 
-- **YouTube API:** Se utilizará la API de YouTube para obtener información sobre el video, como el título, la descripción y los comentarios.
+- **YouTube API:** Se utilizará la API de YouTube para obtener información sobre el video.
 
-- **Procesamiento del Lenguaje Natural (NLP):** La IA estará basada en modelos de NLP para comprender y responder preguntas sobre el contenido del video.
-
+- **Procesamiento del Lenguaje Natural (NLP):** Modelo gpt-3.5 utilizado a travez de la api de openAI
 ## Estructura del Proyecto
 
 El proyecto se dividirá en los siguientes componentes principales:
@@ -22,11 +21,10 @@ El proyecto se dividirá en los siguientes componentes principales:
 
 2. **Integración con YouTube API:**
    - Extracción de información del video utilizando la API de YouTube.
-   - Obtención de comentarios y metadatos relevantes.
 
 3. **Modelo de Preguntas y Respuestas (Q&A):**
-   - Implementación de un modelo de NLP entrenado para entender preguntas relacionadas con el video.
-   - Generación de respuestas basadas en el análisis del contenido del video y los comentarios.
+   - Implementación del a travez de la api
+   - Generación de respuestas basadas en el análisis del contenido del video.
 
 4. **Despliegue:**
    - Configuración de un entorno de producción para la aplicación Streamlit.
