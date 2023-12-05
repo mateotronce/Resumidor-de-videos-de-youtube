@@ -1,41 +1,42 @@
-# Proyecto de Preguntas a IA sobre Video de YouTube con Interfaz en Streamlit
+# Project: Questioning AI about YouTube Video with Streamlit Interface
 
-## Descripción del Proyecto
+## Project Description
 
-Este proyecto tiene como objetivo desarrollar una interfaz de usuario utilizando Streamlit para interactuar con una inteligencia artificial (IA) capaz de responder preguntas relacionadas con un video de YouTube. La IA será entrenada para comprender el contenido del video y proporcionar respuestas precisas a las preguntas formuladas por el usuario.
+This project aims to develop a user interface using Streamlit to interact with an artificial intelligence (AI) capable of answering questions related to a YouTube video. The AI will be trained to understand the content of the video and provide accurate answers to user-formulated questions.
 
-## Tecnologías Utilizadas
+## Technologies Used
 
-- **Streamlit:** Una biblioteca de Python para la creación de aplicaciones web interactivas con facilidad.
+- **Streamlit:** A Python library for easily creating interactive web applications.
 
-- **YouTube API:** Se utilizará la API de YouTube para obtener información sobre el video.
+- **YouTube API:** The YouTube API will be used to obtain information about the video.
 
-- **Procesamiento del Lenguaje Natural (NLP):** Modelo gpt-3.5 utilizado a travez de la api de openAI
-## Estructura del Proyecto
+- **Natural Language Processing (NLP):** GPT-3.5 model utilized through the OpenAI API.
 
-El proyecto se dividirá en los siguientes componentes principales:
+## Project Structure
 
-1. **Interfaz de Usuario con Streamlit:**
-   - Pantalla principal que permite al usuario ingresar la URL del video de YouTube.
-   - Sección para introducir preguntas que se realizarán a la IA.
+The project will be divided into the following main components:
 
-2. **Integración con YouTube API:**
-   - Extracción de información del video utilizando la API de YouTube.
+1. **User Interface with Streamlit:**
+   - Main screen allowing the user to enter the YouTube video URL.
+   - Section to input questions that will be posed to the AI.
 
-3. **Modelo de Preguntas y Respuestas (Q&A):**
-   - Implementación del a travez de la api
-   - Generación de respuestas basadas en el análisis del contenido del video.
+2. **Integration with YouTube API:**
+   - Extraction of video information using the YouTube API.
 
-4. **Despliegue:**
-   - Configuración de un entorno de producción para la aplicación Streamlit.
-   - Implementación de la interfaz y la lógica de la IA en un servidor web accesible.
-  
-**Puedes probar el proyecto en el siguiente link**:
+3. **Question and Answer Model (Q&A):**
+   - Implementation through the API.
+   - Generation of answers based on the analysis of the video content.
+
+4. **Deployment:**
+   - Configuration of a production environment for the Streamlit application.
+   - Implementation of the interface and AI logic on an accessible web server.
+
+**You can try the project at the following link**:
 https://huggingface.co/spaces/FOTOTRONCO/ytr
 
-## Ejecución del Proyecto
+## Project Execution
 
-Asegúrate de tener las bibliotecas necesarias instaladas. Puedes hacerlo ejecutando el siguiente comando:
+Make sure you have the necessary libraries installed. You can do this by running the following command:
 
 ```bash
 pip install -r requirements.txt
