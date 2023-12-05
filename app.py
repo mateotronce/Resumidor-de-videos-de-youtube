@@ -42,32 +42,35 @@ button_pressed = st.button("Obtener Resumen")
 # Verificar si se presionó el botón
 if button_pressed:
     # Verificar la entrada del usuario
-    if not url or not api_key or not prompt:
-        st.warning("Por favor, complete todos los campos.")
-    else:
-        # Obtener transcripción del video de YouTube
-        st.info("Procesando el video...")
-        video_transcript = transcript_url(url)
+    try:
+        if not url or not api_key or not prompt:
+            st.warning("Por favor, complete todos los campos.")
+        else:
+            # Obtener transcripción del video de YouTube
+            st.info("Procesando el video...")
+            video_transcript = transcript_url(url)
 
-        # Procesar la transcripción en lotes
-        passes = 0
-        while True:
-            # Obtener resumen y actualizar el contador de pasadas
-            summary, passes = achicar(video_transcript, passes, prompt)
-            # Verificar la longitud del resumen
-            if len(summary) < 4096:
-                break
-            else:
-                st.warning("El resumen es mayor a los tokens necesarios, se procesará nuevamente.")
+            # Procesar la transcripción en lotes
+            passes = 0
+            while True:
+                # Obtener resumen y actualizar el contador de pasadas
+                summary, passes = achicar(video_transcript, passes, prompt)
+                # Verificar la longitud del resumen
+                if len(summary) < 4096:
+                    break
+                else:
+                    st.warning("El resumen es mayor a los tokens necesarios, se procesará nuevamente.")
 
-        # Pausar si es necesario
-        if (passes + 1) % 3 == 0:
-            st.info("Pausando durante 60 segundos...")
-            time.sleep(60)
-            st.info("Finalizaron los 60 segundos")
+            # Pausar si es necesario
+            if (passes + 1) % 3 == 0:
+                st.info("Pausando durante 60 segundos...")
+                time.sleep(60)
+                st.info("Finalizaron los 60 segundos")
 
-        # Obtener resumen final
-        final_summary = resumidor(summary, api_key, prompt)
-        st.success("Finalizo el resumen")
-        st.subheader("Resumen Final:")
-        st.write(final_summary)
+            # Obtener resumen final
+            final_summary = resumidor(summary, api_key, prompt)
+            st.success("Finalizo el resumen")
+            st.subheader("Resumen Final:")
+            st.write(final_summary)
+    except Exception as e:
+        st.write(f"No se pudo completar el proceso por el siguiente error: {e}")
