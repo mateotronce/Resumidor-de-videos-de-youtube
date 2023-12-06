@@ -5,11 +5,11 @@ from agentes import agente_res, resumidor
 import time
 
 
-# Configuración de Streamlit
-st.title("Obtener Resumen de Video de YouTube")
-url = st.text_input("Ingrese la URL de YouTube:")
-api_key = st.text_input("Ingrese su clave de API:")
-prompt = st.text_input("¿Que informacion busca en el video?")
+# Streamlit Configuration
+st.title("Get YouTube Video Summary")
+url = st.text_input("Enter YouTube URL:")
+api_key = st.text_input("Enter your API key:")
+prompt = st.text_input("What information are you looking for in the video?")
 
 def achicar(texto,pasadas,promp):
     if len(texto) >= 4096:
@@ -23,11 +23,11 @@ def achicar(texto,pasadas,promp):
     for i in range(0, cantidad):
         respuestas[f"respuesta{i}"] = agente_res(lista[f"texto{i}"], api_key,promp)
         
-        # Verificar si se ha completado un lote de tres iteraciones
+        # Check if a batch of three iterations has been completed
         if (pasadas + 1) % 3 == 0:
-            print("Pausando durante 60 segundos...")
+            print("Pausing for 60 seconds...")
             time.sleep(60)
-            print("Finalizaron los 60 segundos")
+            print("60 seconds have elapsed")
         
         pasadas += 1
 
@@ -37,25 +37,25 @@ def achicar(texto,pasadas,promp):
         
     return resumen,pasadas
 
-button_pressed = st.button("Obtener Resumen")
+button_pressed = st.button("Get Summary")
 
-# Verificar si se presionó el botón
+# Check if the button was pressed
 if button_pressed:
-    # Verificar la entrada del usuario
+    # Verify user input
     try:
         if not url or not api_key or not prompt:
-            st.warning("Por favor, complete todos los campos.")
+            st.warning("Please fill out all fields.")
         else:
-            # Obtener transcripción del video de YouTube
-            st.info("Procesando el video...")
+            # Get YouTube video transcript
+            st.info("Processing video...")
             video_transcript = transcript_url(url)
 
-            # Procesar la transcripción en lotes
+            # Process transcript in batches
             passes = 0
             while True:
-                # Obtener resumen y actualizar el contador de pasadas
+                # Get summary and update pass counter
                 summary, passes = achicar(video_transcript, passes, prompt)
-                # Verificar la longitud del resumen
+                # Check summary length
                 if len(summary) < 4096:
                     break
                 else:
@@ -63,14 +63,14 @@ if button_pressed:
 
             # Pausar si es necesario
             if (passes + 1) % 3 == 0:
-                st.info("Pausando durante 60 segundos...")
+                st.info("wait 60s...")
                 time.sleep(60)
-                st.info("Finalizaron los 60 segundos")
+                st.info("End of 60 s")
 
             # Obtener resumen final
             final_summary = resumidor(summary, api_key, prompt)
-            st.success("Finalizo el resumen")
-            st.subheader("Resumen Final:")
+            st.success("I finish the summary")
+            st.subheader("Answer:")
             st.write(final_summary)
     except Exception as e:
-        st.write(f"No se pudo completar el proceso por el siguiente error: {e}")
+        st.write(f"The process could not be completed due to the following error: {e}")
