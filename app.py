@@ -8,7 +8,7 @@ import time
 # Streamlit Configuration
 st.title("Get YouTube Video Summary")
 url = st.text_input("Enter YouTube URL:")
-api_key = st.text_input("Enter your API key:")
+api_key = st.text_input("Enter your API key. You can get one at https://platform.openai.com/api-keys:")
 prompt = st.text_input("What information are you looking for in the video?")
 
 def achicar(texto,pasadas,promp):
